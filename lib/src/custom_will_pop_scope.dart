@@ -10,6 +10,7 @@ class CustomWillPopScope extends StatefulWidget {
     Key? key,
     required this.child,
     required this.onWillPop,
+    this.popAction,
   }) : super(key: key);
 
   /// The widget below this widget in the tree.
@@ -21,6 +22,8 @@ class CustomWillPopScope extends StatefulWidget {
   /// route will not be popped.
   final WillPopCallback? onWillPop;
 
+  /// Action to call when the route is popped
+  final void Function()? popAction;
 
   @override
   _CustomWillPopScopeState createState() =>
@@ -42,8 +45,7 @@ class _CustomWillPopScopeState extends State<CustomWillPopScope> {
       _route = ModalRoute.of(context);
 
       // Add the callbacks to the new "current" route.
-      // if (widget.shouldAddCallback)
-        _route?.addScopedWillPopCallback(widget.onWillPop!);
+      _route?.addScopedWillPopCallback(widget.onWillPop!);
     }
   }
 
@@ -53,21 +55,25 @@ class _CustomWillPopScopeState extends State<CustomWillPopScope> {
 
     assert(_route == ModalRoute.of(context));
 
-    if (widget.onWillPop != oldWidget.onWillPop ) {
+    if (widget.onWillPop != oldWidget.onWillPop) {
       // Remove callbacks of the old widget state.
-      if (oldWidget.onWillPop != null)
+      if (oldWidget.onWillPop != null) {
         _route?.removeScopedWillPopCallback(oldWidget.onWillPop!);
+      }
 
       // Add callbacks of the new widget state.
-      if (widget.onWillPop != null )
+      if (widget.onWillPop != null) {
         _route?.addScopedWillPopCallback(widget.onWillPop!);
+      }
     }
   }
 
   @override
   void dispose() {
-    if (widget.onWillPop != null)
+    if (widget.onWillPop != null) {
       _route?.removeScopedWillPopCallback(widget.onWillPop!);
+      if (widget.popAction != null) widget.popAction!();
+    }
     super.dispose();
   }
 

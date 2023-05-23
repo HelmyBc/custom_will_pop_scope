@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
     primarySwatch: Colors.blue,
     pageTransitionsTheme: PageTransitionsTheme(
       builders: {
-        TargetPlatform.android: CupertinoPageTransitionsBuilder(),
-        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        TargetPlatform.android: CustomWillPopScopePageTransitionsBuilder(),
+        TargetPlatform.iOS: CustomWillPopScopePageTransitionsBuilder(),
       },
     ),
   );
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       home: HomeScreen(),
       initialRoute: router.homeScreen,
       onGenerateRoute: router.generateRoute,
-      navigatorKey:locator<NavigationService>().navigationKey,
+      navigatorKey: locator<NavigationService>().navigationKey,
     );
   }
 }

@@ -1,8 +1,7 @@
 import 'package:custom_will_pop_scope/custom_will_pop_scope.dart';
 import 'package:example/locator.dart';
+import 'package:example/navigation_service.dart';
 import 'package:flutter/material.dart';
-
-import '../navigation_service.dart';
 
 class SecondScreen extends StatefulWidget {
   @override
@@ -13,26 +12,29 @@ class _SecondScreenState extends State<SecondScreen> {
   final Color _color = Colors.pink;
 
   /// Holds the state of the screen.
-  bool _hasChanges = true;
+  bool _hasChanges = false;
 
   /// Shows an alert and returns `false` when `_hasChanges` is `true`.
   /// This prevents the navigator from popping this route.
   Future<bool> _onWillPop() async {
     if (_hasChanges) {
       // // Show an alert before returning `false`.
-      // showDialog(
-      //   context: context,
-      //   builder: (context) => AlertDialog(
-      //     content: Text('Back navigation is disabled.'),
-      //   ),
-      // );
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          content: Text('Back navigation is disabled.'),
+        ),
+      );
       // Return `false` to prevent the route from popping.
-      print("1111111");
-      return null;
+      return false;
+    } else {
+      locator<NavigationService>().removeLastRouteName();
+      return true;
     }
-    print("22222");
+  }
+
+  void popAction() {
     locator<NavigationService>().removeLastRouteName();
-    return true;
   }
 
   /// Updates `_hasChanges` with the provided value.
@@ -42,6 +44,7 @@ class _SecondScreenState extends State<SecondScreen> {
   Widget build(BuildContext context) {
     return CustomWillPopScope(
       onWillPop: _onWillPop,
+      popAction: popAction,
       child: Scaffold(
         appBar: AppBar(title: Text('Second Screen'), backgroundColor: _color),
         body: Center(
