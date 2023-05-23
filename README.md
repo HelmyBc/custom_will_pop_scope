@@ -21,7 +21,7 @@ A working app using this package can be found in the [example](example/lib/main.
 
 ## Usage
 
-To use this package, add `cupertino_will_pop_scope` as a [dependency in your pubspec.yaml file](https://flutter.io/using-packages/).
+To use this package, add `custom_will_pop_scope` as a [dependency in your pubspec.yaml file](https://flutter.io/using-packages/).
 
 
 ## Example
@@ -29,7 +29,7 @@ To use this package, add `cupertino_will_pop_scope` as a [dependency in your pub
 
 ``` dart
 // main.dart
-import 'package:decorated_icon/cupertino_will_pop_scope.dart';
+import 'package:decorated_icon/custom_will_pop_scope.dart';
 ```
 
 ### Configure page transitions

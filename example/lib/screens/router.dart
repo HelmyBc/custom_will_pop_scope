@@ -25,15 +25,6 @@ getPageRoute(Widget viewToShow) {
   return CupertinoPageRoute(builder: (context) {
     return viewToShow;
   });
-  // if (Platform.isIOS) {
-  //   return CupertinoPageRoute(
-  //       builder: (BuildContext context) => viewToShow,
-  //       settings: RouteSettings(arguments: args, name: viewToShow.toString()));
-  // } else
-  // return PageTransition(
-  //     child: viewToShow,
-  //     type: transitionAnimation,
-  //     settings: RouteSettings(arguments: args, name: viewToShow.toString()));
 }
 
 

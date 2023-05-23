@@ -226,17 +226,6 @@ mixin CupertinoRouteTransitionMixin<T> on PageRoute<T> {
       child: child,
     );
     assert(() {
-      // `child` has a non-nullable return type, but might be null when
-      // running with weak checking, so we need to null check it anyway (and
-      // ignore the warning that the null-handling logic is dead code).
-      if (child == null) {
-        // ignore: dead_code
-        throw FlutterError.fromParts(<DiagnosticsNode>[
-          ErrorSummary(
-              'The builder for route "${settings.name}" returned null.'),
-          ErrorDescription('Route builders must never return null.'),
-        ]);
-      }
       return true;
     }());
     return result;
@@ -353,7 +342,7 @@ class CupertinoPageRoute<T> extends PageRoute<T>
     RouteSettings? settings,
     this.maintainState = true,
     bool fullscreenDialog = false,
-  })  : super(settings: settings, fullscreenDialog: fullscreenDialog) {
+  }) : super(settings: settings, fullscreenDialog: fullscreenDialog) {
     assert(opaque);
   }
 
@@ -381,7 +370,7 @@ class _PageBasedCupertinoPageRoute<T> extends PageRoute<T>
     with CupertinoRouteTransitionMixin<T> {
   _PageBasedCupertinoPageRoute({
     required CupertinoPage<T> page,
-  })  : super(settings: page) {
+  }) : super(settings: page) {
     assert(opaque);
   }
 
@@ -430,7 +419,7 @@ class CupertinoPage<T> extends Page<T> {
     String? name,
     Object? arguments,
     String? restorationId,
-  })  : super(
+  }) : super(
             key: key,
             name: name,
             arguments: arguments,
@@ -610,7 +599,7 @@ class _CupertinoBackGestureDetector<T> extends StatefulWidget {
     required this.getWillPopCallback,
     required this.onStartPopGesture,
     required this.child,
-  })  : super(key: key);
+  }) : super(key: key);
 
   final Widget child;
 
@@ -1331,7 +1320,6 @@ Future<T?> showCupertinoDialog<T>({
   RouteSettings? routeSettings,
   Offset? anchorPoint,
 }) {
-
   return Navigator.of(context, rootNavigator: useRootNavigator)
       .push<T>(CupertinoDialogRoute<T>(
     builder: builder,
@@ -1396,7 +1384,7 @@ class CupertinoDialogRoute<T> extends RawDialogRoute<T> {
         _buildCupertinoDialogTransitions,
     RouteSettings? settings,
     Offset? anchorPoint,
-  })  : super(
+  }) : super(
           pageBuilder: (BuildContext context, Animation<double> animation,
               Animation<double> secondaryAnimation) {
             return builder(context);
