@@ -84,7 +84,7 @@ class  HomeScreen  extends  StatelessWidget {
 ```
 
   
-##### The second screen (Using WillPopScope):
+##### The second screen (Using CustomWillPopScope):
 
 ```dart
 
