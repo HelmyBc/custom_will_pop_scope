@@ -98,6 +98,7 @@ class  SecondScreen  extends  StatefulWidget {
   
 
 class  _SecondScreenState  extends  State<SecondScreen> {
+  
 	final  NavigationService  _navigationService  =  locator<NavigationService>();
 	/// Holds the state of the screen.
 	bool  _canReturn  =  true;
@@ -123,10 +124,9 @@ class  _SecondScreenState  extends  State<SecondScreen> {
 		_navigationService.removeLastRouteName();
 	}
 
-  
-
 	/// Updates `_hasChanges` with the provided value.
 	void  _updateChanges(bool  value) =>  setState(() =>  _canReturn  =  value);
+
 	@override
 	Widget  build(BuildContext  context) {
 		return  CustomWillPopScope(
