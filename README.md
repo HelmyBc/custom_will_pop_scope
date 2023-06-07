@@ -99,62 +99,63 @@ class  SecondScreen  extends  StatefulWidget {
 
 class  _SecondScreenState  extends  State<SecondScreen> {
 
-final  NavigationService  _navigationService  =  locator<NavigationService>();
-/// Holds the state of the screen.
-bool  _canReturn  =  true;
-/// Shows an alert and returns `false` when `_canReturn` is `true`.
-/// This prevents the navigator from popping this route.
-Future<bool> _onWillPop() async {
-  if (!_canReturn) {
-  // Show an alert before returning `false`.
-    showDialog(context:  context,
-      builder: (context) =>  AlertDialog(
-        content:  Text('Back navigation is disabled.'),
-      ),
-    );
-    // Return `false` to prevent the route from popping.
-    return  false;
-  } else {
-    _navigationService.removeLastRouteName();
-    return  true;
+  final  NavigationService  _navigationService  =  locator<NavigationService>();
+  /// Holds the state of the screen.
+  bool  _canReturn  =  true;
+  /// Shows an alert and returns `false` when `_canReturn` is `true`.
+  /// This prevents the navigator from popping this route.
+  Future<bool> _onWillPop() async {
+    if (!_canReturn) {
+    // Show an alert before returning `false`.
+      showDialog(context:  context,
+        builder: (context) =>  AlertDialog(
+          content:  Text('Back navigation is disabled.'),
+        ),
+      );
+      // Return `false` to prevent the route from popping.
+      return  false;
+    } else {
+      _navigationService.removeLastRouteName();
+      return  true;
+    }
   }
-}
 
-void  _onPopAction() {
-  _navigationService.removeLastRouteName();
-}
+  void  _onPopAction() {
+    _navigationService.removeLastRouteName();
+  }
 
-/// Updates `_hasChanges` with the provided value.
-void  _updateChanges(bool  value) =>  setState(() =>  _canReturn  =  value);
+  /// Updates `_hasChanges` with the provided value.
+  void  _updateChanges(bool  value) =>  setState(() =>  _canReturn  =  value);
 
-@override
-Widget  build(BuildContext  context) {
-  return  CustomWillPopScope(
-    // canReturn is optional, it is set to true by default
-    canReturn:  _canReturn,
-    onWillPop:  _onWillPop,
-    onPopAction:  _onPopAction,
-    child:  Scaffold(
-      appBar:  AppBar(title:  Text('Second Screen')),
-      body:  Center(
-        child:  Container(
-          decoration:  BoxDecoration(
-            border:  Border.all(color:  _color),
-            borderRadius:  BorderRadius.circular(6.0),
-          ),
-          margin:  EdgeInsets.symmetric(horizontal:  12.0),
-          child:  SwitchListTile(
-            activeColor:  _color,
-            onChanged:  _updateChanges,
-            title:  Text('Enable back navigation'),
-            value:  _canReturn,
+  @override
+  Widget  build(BuildContext  context) {
+    return  CustomWillPopScope(
+      // canReturn is optional, it is set to true by default
+      canReturn:  _canReturn,
+      onWillPop:  _onWillPop,
+      onPopAction:  _onPopAction,
+      child:  Scaffold(
+        appBar:  AppBar(title:  Text('Second Screen')),
+        body:  Center(
+          child:  Container(
+            decoration:  BoxDecoration(
+              border:  Border.all(color:  _color),
+              borderRadius:  BorderRadius.circular(6.0),
+            ),
+            margin:  EdgeInsets.symmetric(horizontal:  12.0),
+            child:  SwitchListTile(
+              activeColor:  _color,
+              onChanged:  _updateChanges,
+              title:  Text('Enable back navigation'),
+              value:  _canReturn,
+            ),
           ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
-}
+
 ```
 
   
