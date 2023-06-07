@@ -49,7 +49,6 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-
 class SecondScreen extends StatefulWidget {
   @override
   _SecondScreenState createState() => _SecondScreenState();
@@ -85,7 +84,7 @@ class _SecondScreenState extends State<SecondScreen> {
     _navigationService.removeLastRouteName();
   }
 
-  /// Updates `_hasChanges` with the provided value.
+  /// Updates `_canReturn` with the provided value.
   void _updateChanges(bool value) => setState(() => _canReturn = value);
 
   @override

@@ -11,7 +11,7 @@ class CustomWillPopScope extends StatelessWidget {
     required this.child,
     required this.onWillPop,
     this.canReturn = true,
-    required this.onPopAction,
+    this.onPopAction,
   }) : super(key: key);
 
   /// The widget below this widget in the tree.
@@ -26,7 +26,7 @@ class CustomWillPopScope extends StatelessWidget {
   final Future<bool> Function() onWillPop;
 
   /// Called when dissmissing the enclosing [ModalRoute].
-  final void Function() onPopAction;
+  final void Function()? onPopAction;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,9 @@ class CustomWillPopScope extends StatelessWidget {
                 details.velocity.pixelsPerSecond.dx > 0) &&
             Navigator.of(context).canPop()) {
           Navigator.of(context).pop();
-          onPopAction();
+          if (onPopAction != null) {
+            onPopAction!();
+          }
         }
       },
       child: WillPopScope(

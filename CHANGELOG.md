@@ -6,3 +6,5 @@
 ## [2.0.1]
 - Update README
 - Update the Example
+## [2.0.2]
+- Make onPopAction nullable
