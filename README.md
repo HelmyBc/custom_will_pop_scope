@@ -3,10 +3,9 @@
 
 [![pub package](https://img.shields.io/pub/v/custom_will_pop_scope.svg)](https://pub.dev/packages/custom_will_pop_scope)
 
->  _Note: This package can be used on any platform, and is not specific to iOS. `CustomWillPopScope` and `CustomWillPopScopePageTransionsBuilder` can each be used seprately._
+>  _Note: This package can be used on any platform, and is not specific to iOS._
 
   
-
 <br/>
 
   
@@ -57,7 +56,7 @@ Using the included `CustomWillPopScope` widget, wrap your screen and define an `
 
   
 
-##### Using CustomWillPopScope:
+##### The first Screen:
 ```dart
 
 // first_screen.dart
@@ -85,7 +84,7 @@ class  HomeScreen  extends  StatelessWidget {
 ```
 
   
-###### Using WillPopScope:
+##### The second screen (Using WillPopScope):
 
 ```dart
 
