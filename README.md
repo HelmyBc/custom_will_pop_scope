@@ -62,31 +62,25 @@ Using the included `CustomWillPopScope` widget, wrap your screen and define an `
 
 // first_screen.dart
 class  HomeScreen  extends  StatelessWidget {
+  void  navigateToNext() {
+  locator<NavigationService>().navigateTo(secondScreen);
+  }
 
-void  navigateToNext() {
-
-locator<NavigationService>().navigateTo(secondScreen);
-
-}
-
-  
-
-@override
-
-Widget  build(BuildContext  context) {
-	return  Scaffold(
-		appBar:AppBar(title: Text('CustomWillPopScopeDemo')),
-		body:  Center(
-			child:  ElevatedButton(
-				onPressed: () =>  navigateToNext(),	
-				child:  Padding(
-					padding:  EdgeInsets.symmetric(horizontal:  24.0,vertical:  12.0),
-					child:  Text('Go to second screen'),
-					),
-				),
-			),
-		);
-	}
+  @override
+  Widget  build(BuildContext  context) {
+    return  Scaffold(
+      appBar:AppBar(title: Text('CustomWillPopScopeDemo')),
+      body:  Center(
+        child:  ElevatedButton(
+          onPressed: () =>  navigateToNext(),	
+          child:  Padding(
+            padding:  EdgeInsets.symmetric(horizontal:  24.0,vertical:  12.0),
+            child:  Text('Go to second screen'),
+            ),
+          ),
+        ),
+      );
+    }
 }
 ```
 
