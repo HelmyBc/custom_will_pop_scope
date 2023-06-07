@@ -1,8 +1,8 @@
 
-import 'package:example/screens/home_screen.dart';
-import 'package:example/screens/second_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'main.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -17,7 +17,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
                 body: Center(
                   child: Text("No route defined for ${settings.name}"),
                 ),
-              ));
+              ),);
   }
 }
 

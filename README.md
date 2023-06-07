@@ -1,6 +1,7 @@
 
 # CustomWillPopScope
 
+[![pub package](https://img.shields.io/pub/v/custom_will_pop_scope.svg)](https://pub.dev/packages/custom_will_pop_scope)
   
 
 >  _Note: This package can be used on any platform, and is not specific to iOS. `CustomWillPopScope` and `CustomWillPopScopePageTransionsBuilder` can each be used seprately._
