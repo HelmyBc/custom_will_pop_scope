@@ -97,8 +97,8 @@ Widget  build(BuildContext  context) {
 
 // second_screen.dart
 class  SecondScreen  extends  StatefulWidget {
-	@override
-	_SecondScreenState  createState() =>  _SecondScreenState();
+  @override
+  _SecondScreenState  createState() =>  _SecondScreenState();
 }
 
   
