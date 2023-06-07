@@ -44,6 +44,7 @@ class _SecondScreenState extends State<SecondScreen> {
   @override
   Widget build(BuildContext context) {
     return CustomWillPopScope(
+      // canReturn is optional, it is set to true by default
       canReturn: _canReturn,
       onWillPop: _onWillPop,
       onPopAction: _onPopAction,
