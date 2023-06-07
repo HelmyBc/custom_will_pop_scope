@@ -1,10 +1,10 @@
 name: custom_will_pop_scope
 description: Enables 'onWillPop' callbacks on Cupertino page transitions and improves visual feedback of rejected "Swipe to go back" gestures.
-version: 2.0.1
+version: 2.0.3
 repository: https://github.com/HelmyBc/custom_will_pop_scope
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: '>=2.19.0 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:

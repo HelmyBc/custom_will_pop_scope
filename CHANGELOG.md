@@ -8,3 +8,7 @@
 - Update the Example
 ## [2.0.2]
 - Make onPopAction nullable
+## [2.0.3]
+- Make the package compatible with Dart SDK >= 2.19.0
+- Add documentation
+- Update README
