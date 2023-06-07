@@ -93,6 +93,7 @@ class _SecondScreenState extends State<SecondScreen> {
       // canReturn is optional, it is set to true by default
       canReturn: _canReturn,
       onWillPop: _onWillPop,
+      // onPopAction is optional, use it when you have a function to call when dissmissing the enclosing [ModalRoute].
       onPopAction: _onPopAction,
       child: Scaffold(
         appBar: AppBar(title: Text('Second Screen'), backgroundColor: _color),
