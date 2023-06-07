@@ -12,12 +12,6 @@ void main() {
 class MyApp extends StatelessWidget {
   final theme = ThemeData(
     primarySwatch: Colors.blue,
-    pageTransitionsTheme: PageTransitionsTheme(
-      builders: {
-        TargetPlatform.android: CustomWillPopScopePageTransitionsBuilder(),
-        TargetPlatform.iOS: CustomWillPopScopePageTransitionsBuilder(),
-      },
-    ),
   );
 
   @override
