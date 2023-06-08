@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 /// An alternative of [WillPopScope] that enable the iOS swipe to return.
@@ -10,8 +12,9 @@ class CustomWillPopScope extends StatelessWidget {
     Key? key,
     required this.child,
     required this.onWillPop,
-    this.canReturn = true,
     this.onPopAction,
+    this.canReturn = true,
+    this.swipeOnAndroid = false,
   }) : super(key: key);
 
   /// The widget below this widget in the tree.
@@ -28,6 +31,10 @@ class CustomWillPopScope extends StatelessWidget {
   /// Called when dissmissing the enclosing [ModalRoute].
   final void Function()? onPopAction;
 
+  /// Choose whether to use swipe screen to return to previous page or not.
+  /// [swipeOnAndroid] is set to `false` by default.
+  final bool swipeOnAndroid;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -35,7 +42,8 @@ class CustomWillPopScope extends StatelessWidget {
         // Enables the iOS return swipe according to some conditions
         if (canReturn &&
             (details.velocity.pixelsPerSecond.dx < 0 ||
-                details.velocity.pixelsPerSecond.dx > 0) &&
+                details.velocity.pixelsPerSecond.dx > 0 &&
+                    (Platform.isIOS || swipeOnAndroid)) &&
             Navigator.of(context).canPop()) {
           Navigator.of(context).pop();
           if (onPopAction != null) {
