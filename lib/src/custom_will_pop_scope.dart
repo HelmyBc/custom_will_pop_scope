@@ -41,9 +41,8 @@ class CustomWillPopScope extends StatelessWidget {
       onPanEnd: (details) {
         // Enables the iOS return swipe according to some conditions
         if (canReturn &&
-            (details.velocity.pixelsPerSecond.dx < 0 ||
-                details.velocity.pixelsPerSecond.dx > 0 &&
-                    (Platform.isIOS || swipeOnAndroid)) &&
+            (details.velocity.pixelsPerSecond.dx > 0 &&
+                (Platform.isIOS || swipeOnAndroid)) &&
             Navigator.of(context).canPop()) {
           Navigator.of(context).pop();
           if (onPopAction != null) {

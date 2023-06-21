@@ -97,20 +97,43 @@ class _SecondScreenState extends State<SecondScreen> {
       onPopAction: _onPopAction,
       child: Scaffold(
         appBar: AppBar(title: Text('Second Screen'), backgroundColor: _color),
-        body: Center(
-          child: Container(
-            child: SwitchListTile(
-              activeColor: _color,
-              onChanged: _updateChanges,
-              title: Text('Enable back navigation'),
-              value: _canReturn,
+        body: Column(
+          children: [
+            Container(
+              child: SwitchListTile(
+                activeColor: _color,
+                onChanged: _updateChanges,
+                title: Text('Enable back navigation'),
+                value: _canReturn,
+              ),
+              decoration: BoxDecoration(
+                border: Border.all(color: _color),
+                borderRadius: BorderRadius.circular(6.0),
+              ),
+              margin: EdgeInsets.symmetric(horizontal: 12.0),
             ),
-            decoration: BoxDecoration(
-              border: Border.all(color: _color),
-              borderRadius: BorderRadius.circular(6.0),
+            Expanded(
+              child: PageView(
+                children: [
+                  Scaffold(
+                    body: Center(
+                      child: Text("Page 1"),
+                    ),
+                  ),
+                  Scaffold(
+                    body: Center(
+                      child: Text("Page 2"),
+                    ),
+                  ),
+                  Scaffold(
+                    body: Center(
+                      child: Text("Page 3"),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            margin: EdgeInsets.symmetric(horizontal: 12.0),
-          ),
+          ],
         ),
       ),
     );
